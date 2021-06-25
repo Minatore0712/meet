@@ -25,13 +25,19 @@ class CitySearch extends Component {
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
-      showSuggestions: false
+      showSuggestions: false,
     });
-  
+
     this.props.updateEvents(suggestion);
-  }
+  };
 
   render() {
+    {
+      console.log("state:");
+      console.log(this.state);
+      console.log("props:");
+      console.log(this.props);
+    }
     return (
       <div className="CitySearch">
         <input
@@ -43,7 +49,10 @@ class CitySearch extends Component {
             this.setState({ showSuggestions: true });
           }}
         />
-      <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
+        <ul
+          className="suggestions"
+          style={this.state.showSuggestions ? {} : { display: "none" }}
+        >
           {this.state.suggestions.map((suggestion) => (
             <li
               key={suggestion}
