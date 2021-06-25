@@ -6,6 +6,6 @@ describe('<NumberofEvents /> component', () => {
 
   test('render the number of events menu', () => {
     const numberFilter = shallow(<NumberOfEvents />);
-    expect(numberFilter.find('.numberOfEvents')).toHaveLength(1);
+    expect(numberFilter.find('.NumberOfEvents')).toHaveLength(1);
   });
 });
