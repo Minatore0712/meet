@@ -32,12 +32,6 @@ class CitySearch extends Component {
   };
 
   render() {
-    {
-      console.log("state:");
-      console.log(this.state);
-      console.log("props:");
-      console.log(this.props);
-    }
     return (
       <div className="CitySearch">
         <input
