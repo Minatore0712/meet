@@ -8,4 +8,6 @@ describe('<NumberofEvents /> component', () => {
     const numberFilter = shallow(<NumberOfEvents />);
     expect(numberFilter.find('.NumberOfEvents')).toHaveLength(1);
   });
+
+  
 });

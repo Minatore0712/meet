@@ -38,6 +38,16 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  test('App reads mock data', () => {
+    const AppWrapper = mount(<App />);
+    const AppEventsState = AppWrapper.state('events');
+    console.log("AppEventsState");
+    console.log(JSON.stringify(AppEventsState));
+    expect(AppEventsState).not.toEqual(undefined);
+    expect(AppEventsState.length).toBeGreaterThan(0);
+    AppWrapper.unmount();
+  });
+
   test('App passes "locations" state as a prop to CitySearch', () => {
     const AppWrapper = mount(<App />);
     const AppLocationsState = AppWrapper.state('locations');
