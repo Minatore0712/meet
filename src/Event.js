@@ -5,6 +5,14 @@ class Event extends Component {
     showMore: false,
   };
 
+  handleShowHideButton = () => {
+    if (this.state.showMore === true) {
+      this.setState({ showMore: false });
+    } else {
+      this.setState({ showMore: true });
+    }
+  };
+
   render() {
     const event = this.props.event;
     const eventISODateTime = new Date(event.start.dateTime);
@@ -18,7 +26,21 @@ class Event extends Component {
         <p>
           @ {event.summary} / {event.location}
         </p>
-        <button className="details-btn">Show more</button>
+
+        {this.state.showMore && (
+          <div className='event-details'>
+            <h2>About event:</h2>
+            <a href={event.htmlLink}>See Details on Google Calendar</a>
+            <p>{event.description}</p>
+          </div>
+        )}
+
+        <button
+          className="details-btn"
+          onClick={() => this.handleShowHideButton()}
+        >
+          {!this.state.showMore ? "Show Details" : "Hide Details"}
+        </button>
       </div>
     );
   }

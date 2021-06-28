@@ -22,7 +22,7 @@ describe('<EventList /> component', () => {
       const createdEvent = shallow(<Event event={mockData[0]} />)
       const changeState = createdEvent.state({showMore: false});
       createdEvent.find('.details-btn').simulate('click', changeState);
-      expect(createdEvent.state('showMore')).toBe(false);
+      expect(createdEvent.state('showMore')).toBe(true);
     })
 
     });
