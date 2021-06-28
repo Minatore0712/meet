@@ -1,8 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
+#root {
+  height: 100vh;
+}
+
+body {
+  /* background-image: linear-gradient(to right top, #d80083, #f83361, #ff663f, #fb961e, #e5c218); */
+  background-image: linear-gradient(to right top, #906899, #967fac, #9e96bd, #aaaccc, #bac1d8);
+}
+
 .App {
+  padding: 2% 10%;
+}
+
+.title {
   text-align: center;
-  padding: 2% 5%;
+  color: white;
+  font-size: 50pt;
+  font-weight: bold;
+  padding-bottom: 50px;
+  padding-top: 20px;
 }
 
 .App * {
@@ -31,17 +48,26 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   border: 1px solid #ccc;
+  border-radius: 30px;
   font-size: 14px;
   line-height: 20px;
   align-self: center;
   height: 38px;
 }
 
+label {
+  color: #fff;
+  font-size: 15pt;
+  padding-right: 10px;
+}
+
+
 .city {
   width: 250px;
 }
 
 .CitySearch {
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
@@ -78,22 +104,34 @@ input[type="number"] {
 }
 
 .event {
-  padding: 10px 10px 35px;
+  padding: 20px 35px 35px;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 20px;
   position: relative;
+  margin: 30px 20px 30px 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 .details-btn {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 25px;
+  bottom: 25px;
   padding: 5px 8px;
-  border-radius: 4px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
   outline: none;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+  background-color: rgb(153, 138, 182);
+  color: white;
+}
+
+.details-btn:hover {
+  background-color: rgb(115, 99, 146);
+
 }
 
 .name {
