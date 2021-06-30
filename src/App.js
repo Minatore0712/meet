@@ -4,7 +4,6 @@ import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import { WarningAlert } from './Alert';
 import { getEvents, extractLocations } from "./api";
 
 import "./nprogress.css";
@@ -15,23 +14,11 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     currentCity: "all",
-    warningText: ''
   };
 
   componentDidMount() {
     const { numberOfEvents } = this.state;
     this.mounted = true;
-    
-    if (!navigator.onLine) {
-      this.setState({
-        warningText: 'Cached data is being displayed.'
-      });
-    }
-    else {
-      this.setState({
-        warningText: ''
-      })
-    }
 
     getEvents().then((events) => {
       if (this.mounted) {
@@ -81,7 +68,6 @@ class App extends Component {
           updateNumberOfEvents={(e) => this.updateNumberOfEvents(e)}
         />
         <EventList events={this.state.events} />
-        <WarningAlert text={this.state.warningText} />
       </div>
     );
   }
