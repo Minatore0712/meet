@@ -14,12 +14,19 @@ body {
   padding: 2% 10%;
 }
 
+.Alert {
+  text-align: center;
+  position: absolute;
+  display: inline;
+  top: -50px;
+}
+
 .title {
   text-align: center;
   color: white;
   font-size: 50pt;
   font-weight: bold;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   padding-top: 20px;
 }
 
@@ -168,10 +175,6 @@ label {
   font-family: sans-serif;
 }
 
-.Alert {
-  text-align: center;
-  top: 20px;
-}
 
 .data-vis-wrapper {
   display: flex;
