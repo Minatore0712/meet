@@ -26,6 +26,8 @@ export const getEvents = async () => {
     return mockData;
   }
 
+
+
   const removeQuery = () => {
     if (window.history.pushState && window.location.pathname) {
       var newurl =
@@ -40,7 +42,13 @@ export const getEvents = async () => {
     }
   };
 
-
+  if (!navigator.onLine) {
+    const events = localStorage.getItem('lastEvents');
+    NProgress.done();
+    console.log(events);
+    return events ? JSON.parse(events).events : [];
+  }
+  
   const token = await getAccessToken();
 
   if (token) {
@@ -52,9 +60,11 @@ export const getEvents = async () => {
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
+
     NProgress.done();
     return result.data.events;
   }
+  
 };
 
 const getToken = async (code) => {
