@@ -5,9 +5,9 @@
 }
 
 body {
-  /* background-image: linear-gradient(to right top, #d80083, #f83361, #ff663f, #fb961e, #e5c218); */
+  /* background-image: linear-gradient(to right top, #d80083, #f83361, #ff663f, #fb961e, #e5c218);
   background-image: linear-gradient(to right top, #906899, #967fac, #9e96bd, #aaaccc, #bac1d8);
-  background-position: fixed;
+  background-position: fixed; */
 }
 
 .App {
@@ -16,14 +16,13 @@ body {
 
 .Alert {
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   display: inline;
   top: -50px;
 }
 
 .title {
   text-align: center;
-  color: white;
   font-size: 50pt;
   font-weight: bold;
   padding-bottom: 70px;
@@ -64,7 +63,6 @@ input[type="number"] {
 }
 
 label {
-  color: #fff;
   font-size: 15pt;
   padding-right: 10px;
 }

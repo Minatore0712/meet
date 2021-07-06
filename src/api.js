@@ -3,12 +3,13 @@ import axios from "axios";
 import NProgress from 'nprogress';
 
 export const extractLocations = (events) => {
+  console.log("api call");
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
 };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
