@@ -2,7 +2,6 @@
   "name": "meet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Minatore0712.github.io/meet",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -29,7 +28,7 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set NODE_ENV=development && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

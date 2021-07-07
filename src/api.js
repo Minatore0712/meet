@@ -2,70 +2,32 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from 'nprogress';
 
-export const extractLocations = (events) => {
-  console.log("api call");
-  var extractLocations = events.map((event) => event.location);
-  var locations = [...new Set(extractLocations)];
-  return locations;
-};
 
 export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
     .then((res) => res.json())
-    .catch((error) => error.json());
+    .catch((error) => {
+      console.error(error);
+      return error;
+    });
 
   return result;
 };
 
-export const getEvents = async () => {
-  NProgress.start();
-
-  if (window.location.href.startsWith("http://localhost")) {
-    NProgress.done();
-    return mockData;
+const removeQuery = () => {
+  if (window.history.pushState && window.location.pathname) {
+    var newurl =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname;
+    window.history.pushState("", "", newurl);
+  } else {
+    newurl = window.location.protocol + "//" + window.location.host;
+    window.history.pushState("", "", newurl);
   }
-
-
-
-  const removeQuery = () => {
-    if (window.history.pushState && window.location.pathname) {
-      var newurl =
-        window.location.protocol +
-        "//" +
-        window.location.host +
-        window.location.pathname;
-      window.history.pushState("", "", newurl);
-    } else {
-      newurl = window.location.protocol + "//" + window.location.host;
-      window.history.pushState("", "", newurl);
-    }
-  };
-
-  if (!navigator.onLine) {
-    const events = localStorage.getItem('lastEvents');
-    NProgress.done();
-    console.log(events);
-    return events ? JSON.parse(events).events : [];
-  }
-  
-  const token = await getAccessToken();
-
-  if (token) {
-    removeQuery();
-    const url = 'https://jecxbj0rsh.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
-    const result = await axios.get(url);
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data));
-      localStorage.setItem("locations", JSON.stringify(locations));
-    }
-
-    NProgress.done();
-    return result.data.events;
-  }
-  
 };
 
 const getToken = async (code) => {
@@ -101,4 +63,50 @@ export const getAccessToken = async () => {
     return code && getToken(code);
   }
   return accessToken;
+};
+
+export const getEvents = async () => {
+  NProgress.start();
+
+  if (window.location.href.startsWith("http://localhost")) {
+    NProgress.done();
+    return mockData;
+  }
+
+  if (!navigator.onLine) {
+    console.log("getEvents on offline");
+    const events = localStorage.getItem('lastEvents');
+    NProgress.done();
+    console.log(events);
+    // return {
+    //   events: JSON.parse(events).events,
+    //   locations: extractLocations(JSON.parse(events).events),
+    // };
+    return JSON.parse(events).events;
+  }
+  
+  const token = await getAccessToken();
+
+  if (token) {
+    removeQuery();
+    const url = 'https://jecxbj0rsh.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
+    const result = await axios.get(url);
+    if (result.data) {
+      var locations = extractLocations(result.data.events);
+      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+      localStorage.setItem("locations", JSON.stringify(locations));
+    }
+
+    NProgress.done();
+    return result.data.events;
+  }
+  
+};
+
+
+export const extractLocations = (events) => {
+  console.log("api call");
+  var extractLocations = events.map((event) => event.location);
+  var locations = [...new Set(extractLocations)];
+  return locations;
 };

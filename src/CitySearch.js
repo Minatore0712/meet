@@ -21,6 +21,7 @@ class CitySearch extends Component {
     });
     console.log("hanleInputChanged");
     console.log(suggestions);
+    
     if (suggestions.length === 0) {
       this.setState({
         query: value,
@@ -43,8 +44,7 @@ class CitySearch extends Component {
       query: suggestion,
       showSuggestions: false,
     });
-
-    this.props.updateEvents(suggestion);
+    this.props.updateEvents(suggestion, 0);
   };
 
   render() {

@@ -17,7 +17,7 @@ const credentials = {
     "http://localhost:3000",
   ],
 };
-const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
+const { client_secret, client_id, calendar_id, redirect_uris } = credentials;
 const oAuth2Client = new OAuth2(client_id, client_secret, redirect_uris[0]);
 
 module.exports.getAuthURL = async () => {
@@ -38,7 +38,6 @@ module.exports.getAuthURL = async () => {
 };
 
 module.exports.getAccessToken = async (event) => {
-  const oAuth2Client = new OAuth2(client_id, client_secret, redirect_uris[0]);
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
@@ -68,7 +67,6 @@ module.exports.getAccessToken = async (event) => {
 };
 
 module.exports.getCalendarEvents = async (event) => {
-  const oAuth2Client = new OAuth2(client_id, client_secret, redirect_uris[0]);
   const access_token = decodeURIComponent(
     `${event.pathParameters.access_token}`
   );

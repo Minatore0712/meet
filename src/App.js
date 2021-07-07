@@ -42,17 +42,15 @@ class App extends Component {
 
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
-          if (this.mounted) {
-            console.log("numberofevents");
-            console.log(this.state.numberOfEvents);
-            console.log("events");
-            console.log(events);
-            
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-      }
+        if (this.mounted) {
+          console.log("componentDidMount");
+          console.log(this.state);
+          console.log(events);
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
+        }
       });
     }
   }
@@ -73,8 +71,15 @@ class App extends Component {
       if (location === "all" && eventCount === 0) {
         locationEvents = events;
       } else if (location !== "all" && eventCount === 0) {
+        console.log("here");
+        console.log(events);
         locationEvents = events.filter((event) => event.location === location);
+        console.log("locationEvent");
+        console.log(locationEvents);
       } else if (location === "" && eventCount > 0) {
+        console.log("update events");
+        console.log(events);
+        console.log(eventCount);
         locationEvents = events.slice(0, eventCount);
       } else if (location === "" && eventCount === "") {
         locationEvents = events;
@@ -86,7 +91,6 @@ class App extends Component {
     });
   };
 
- 
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
@@ -106,7 +110,7 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
         />
-           {console.log("app state")}
+        {console.log("app state")}
         {console.log(this.state)}
         <EventList events={this.state.events} />
         <WelcomeScreen

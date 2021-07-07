@@ -29,12 +29,14 @@ o.svg"
           </button>
         </div>
       </div>
+      <div class="links">
       <a
         href="https://Minatore0712.github.io/meet/privacy.html"
         rel="nofollow noopener"
       >
         Privacy policy
       </a>
+      </div>
     </div>
   ) : null;
 }
