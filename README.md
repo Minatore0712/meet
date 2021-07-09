@@ -5,7 +5,7 @@ It will use the Google Calender API to fetch data about upcoming events in certa
 ![App Image](https://cdn.discordapp.com/attachments/681624843988369445/863017119716343828/unknown.png)
 
 # Live Build
- [here](https://minatore0712.github.io/meet/){:target="_blank"}
+ [here](https://minatore0712.github.io/meet/)
 
 # Features
 
