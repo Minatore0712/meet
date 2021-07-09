@@ -6,6 +6,14 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 import { WarningAlert } from "./Alert";
 
@@ -20,6 +28,8 @@ class App extends Component {
     warningText: "",
     showWelcomeScreen: undefined,
   };
+
+
 
   async componentDidMount() {
     this.mounted = true;
@@ -91,6 +101,18 @@ class App extends Component {
     });
   };
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(", ").shift();
+      return { city, number };
+    });
+    return data;
+  };
+
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
@@ -98,7 +120,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="title">
-          <span>meet</span> App
+          <span>meet</span> App TEST
         </p>
         <WarningAlert text={this.state.warningText} />
         <CitySearch
@@ -110,6 +132,25 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
         />
+
+        <h3>Events in each city</h3>
+
+        <ScatterChart
+          width={400}
+          height={400}
+          margin={{
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis type="category" dataKey="city" name="city"/>
+          <YAxis type="number" dataKey="number" name="number of events" />
+          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         {console.log("app state")}
         {console.log(this.state)}
         <EventList events={this.state.events} />

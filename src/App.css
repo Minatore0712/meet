@@ -4,14 +4,8 @@
   height: 100vh;
 }
 
-body {
-  /* background-image: linear-gradient(to right top, #d80083, #f83361, #ff663f, #fb961e, #e5c218);
-  background-image: linear-gradient(to right top, #906899, #967fac, #9e96bd, #aaaccc, #bac1d8);
-  background-position: fixed; */
-}
-
 .App {
-  padding: 2% 20%;
+  padding: 2% 15%;
 }
 
 .Alert {
