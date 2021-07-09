@@ -5,6 +5,10 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
+
+import EventGenre from "./data-visualization/EventGenre";
+import EventNumbers from "./data-visualization/EventNumbers";
+
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import {
   ScatterChart,
@@ -28,8 +32,6 @@ class App extends Component {
     warningText: "",
     showWelcomeScreen: undefined,
   };
-
-
 
   async componentDidMount() {
     this.mounted = true;
@@ -101,26 +103,15 @@ class App extends Component {
     });
   };
 
-  getData = () => {
-    const { locations, events } = this.state;
-    const data = locations.map((location) => {
-      const number = events.filter(
-        (event) => event.location === location
-      ).length;
-      const city = location.split(", ").shift();
-      return { city, number };
-    });
-    return data;
-  };
-
   render() {
+
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
 
     return (
       <div className="App">
         <p className="title">
-          <span>meet</span> App TEST
+          <span>meet</span> App
         </p>
         <WarningAlert text={this.state.warningText} />
         <CitySearch
@@ -133,26 +124,18 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
 
-        <h3>Events in each city</h3>
+        <div calssName="container">
+          <div>
+            <h3>Number of events per city</h3>
+            <EventNumbers locations={this.state.locations} events={this.state.events} />{" "}
+          </div>
 
-        <ScatterChart
-          width={400}
-          height={400}
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid />
-          <XAxis type="category" dataKey="city" name="city"/>
-          <YAxis type="number" dataKey="number" name="number of events" />
-          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-          <Scatter data={this.getData()} fill="#8884d8" />
-        </ScatterChart>
-        {console.log("app state")}
-        {console.log(this.state)}
+          <div>
+            <h3>Themes of the events</h3>
+            <EventGenre events={this.state.events} />
+          </div>
+        </div>
+
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
