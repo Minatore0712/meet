@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 706 279" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-132.908,-155.809)">
+        <g transform="matrix(1.37165,0,0,1.37165,107.389,-182.681)">
+            <text x="252.767px" y="393.328px" style="font-family:'Montserrat-Regular', 'Montserrat';font-size:177.02px;">eet</text>
+        </g>
+        <g transform="matrix(1.68021,0.00694806,-0.00694806,1.68021,-189.88,-196.258)">
+            <path d="M351.205,257.351C351.205,241.236 338.122,228.153 322.007,228.153L222.736,228.153C206.621,228.153 193.538,241.236 193.538,257.351L193.538,344.943C193.538,361.058 206.621,374.141 222.736,374.141L322.007,374.141C338.122,374.141 351.205,361.058 351.205,344.943L351.205,257.351Z" style="fill:rgb(63,46,243);"/>
+        </g>
+        <g transform="matrix(1.68021,0.00694806,-0.00694806,1.68021,-144.222,-229.084)">
+            <path d="M351.205,257.351C351.205,241.236 338.122,228.153 322.007,228.153L222.736,228.153C206.621,228.153 193.538,241.236 193.538,257.351L193.538,344.943C193.538,361.058 206.621,374.141 222.736,374.141L322.007,374.141C338.122,374.141 351.205,361.058 351.205,344.943L351.205,257.351Z" style="fill:rgb(26,18,183);"/>
+        </g>
+        <g transform="matrix(1.37165,0,0,1.37165,-148.271,-175.727)">
+            <text x="252.767px" y="393.328px" style="font-family:'Montserrat-Regular', 'Montserrat';font-size:177.02px;fill:white;">M</text>
+        </g>
+    </g>
+</svg>

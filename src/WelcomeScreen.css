@@ -3,9 +3,14 @@
     width: 100%;
     height: 100%;
     top: 0;
-    background: white;
-    padding-top: 6%;
+    background: #fafaff;
+    padding-top: 10%;
     padding-right: 40%;
+}
+
+.home-logo {
+    text-align: center;
+    padding-bottom: 5%;
 }
 
 .WelcomeScreen h1,h4,a {
@@ -13,7 +18,9 @@ text-align: center;
 font-weight: lighter;
 }
 
-
+.button_cont {
+    padding-top: 20px;
+}
 
 .login-button {
     color: #494949;
@@ -47,6 +54,10 @@ font-weight: lighter;
     padding-top: 20px;
 }
 
+.logo {
+    width: 30%;
+}
+
 .google-icon {
     position: absolute;
     margin-top: 11px;
@@ -61,7 +72,7 @@ font-weight: lighter;
     font-size: 14px;
     /* letter-spacing: 0.2px;
     font-family: "Roboto"; */
-    background-color: white;
+    background-color: #fafaff;
     color: black;
     width: 80%;
     height: 60%;

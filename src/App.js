@@ -19,6 +19,7 @@ import { WarningAlert } from "./Alert";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./nprogress.css";
+import Logo from "./assets/Logo.svg";
 
 class App extends Component {
   state = {
@@ -97,7 +98,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="title">
-          <span>meet</span> App
+        <img src={Logo} alt='Logo' className="logo"/>
         </p>
         <WarningAlert text={this.state.warningText} />
         <CitySearch
@@ -113,7 +114,7 @@ class App extends Component {
           <Container>
             <Row>
               <Col>
-                <div>
+                <div className="data-box">
                   <h3>Number of events per city</h3>
                   <EventNumbers
                     locations={this.state.locations}
@@ -123,7 +124,7 @@ class App extends Component {
               </Col>
 
               <Col>
-                <div>
+                <div className="data-box">
                   <h3>Themes of the events</h3>
                   <EventGenre events={this.state.events} />
                 </div>
