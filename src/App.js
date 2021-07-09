@@ -10,16 +10,13 @@ import EventGenre from "./data-visualization/EventGenre";
 import EventNumbers from "./data-visualization/EventNumbers";
 
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
-import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from "recharts";
+
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 import { WarningAlert } from "./Alert";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./nprogress.css";
 
@@ -55,9 +52,6 @@ class App extends Component {
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          console.log("componentDidMount");
-          console.log(this.state);
-          console.log(events);
           this.setState({
             events: events.slice(0, this.state.numberOfEvents),
             locations: extractLocations(events),
@@ -83,15 +77,8 @@ class App extends Component {
       if (location === "all" && eventCount === 0) {
         locationEvents = events;
       } else if (location !== "all" && eventCount === 0) {
-        console.log("here");
-        console.log(events);
         locationEvents = events.filter((event) => event.location === location);
-        console.log("locationEvent");
-        console.log(locationEvents);
       } else if (location === "" && eventCount > 0) {
-        console.log("update events");
-        console.log(events);
-        console.log(eventCount);
         locationEvents = events.slice(0, eventCount);
       } else if (location === "" && eventCount === "") {
         locationEvents = events;
@@ -104,7 +91,6 @@ class App extends Component {
   };
 
   render() {
-
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
 
@@ -123,17 +109,27 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
         />
+        <div className="data">
+          <Container>
+            <Row>
+              <Col>
+                <div>
+                  <h3>Number of events per city</h3>
+                  <EventNumbers
+                    locations={this.state.locations}
+                    events={this.state.events}
+                  />{" "}
+                </div>
+              </Col>
 
-        <div calssName="container">
-          <div>
-            <h3>Number of events per city</h3>
-            <EventNumbers locations={this.state.locations} events={this.state.events} />{" "}
-          </div>
-
-          <div>
-            <h3>Themes of the events</h3>
-            <EventGenre events={this.state.events} />
-          </div>
+              <Col>
+                <div>
+                  <h3>Themes of the events</h3>
+                  <EventGenre events={this.state.events} />
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
 
         <EventList events={this.state.events} />

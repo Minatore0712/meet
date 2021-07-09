@@ -9,7 +9,6 @@ export const checkToken = async (accessToken) => {
   )
     .then((res) => res.json())
     .catch((error) => {
-      console.error(error);
       return error;
     });
 
@@ -74,10 +73,10 @@ export const getEvents = async () => {
   }
 
   if (!navigator.onLine) {
-    console.log("getEvents on offline");
+
     const events = localStorage.getItem('lastEvents');
     NProgress.done();
-    console.log(events);
+
     // return {
     //   events: JSON.parse(events).events,
     //   locations: extractLocations(JSON.parse(events).events),
@@ -105,7 +104,6 @@ export const getEvents = async () => {
 
 
 export const extractLocations = (events) => {
-  console.log("api call");
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;

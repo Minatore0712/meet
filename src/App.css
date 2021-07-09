@@ -15,8 +15,14 @@
   top: -50px;
 }
 
-.container {
-  display: flex;
+.data {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.data h3 {
+  font-weight: lighter;
+  color: #3f2ef3;
 }
 
 .title {
@@ -90,6 +96,7 @@ label {
   top: 43px;
   font-size: 14px;
   box-shadow: 5px 5px 5px  rgba(0, 0, 0, 0.144);
+  position: absolute;
 }
 
 .suggestions > li {

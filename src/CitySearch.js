@@ -19,8 +19,7 @@ class CitySearch extends Component {
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
-    console.log("hanleInputChanged");
-    console.log(suggestions);
+
     
     if (suggestions.length === 0) {
       this.setState({
@@ -38,8 +37,7 @@ class CitySearch extends Component {
   };
 
   handleItemClicked = (suggestion) => {
-    console.log("handleItemClicked");
-    console.log(suggestion);
+ 
     this.setState({
       query: suggestion,
       showSuggestions: false,
@@ -65,8 +63,7 @@ class CitySearch extends Component {
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: "none" }}
         >
-          {console.log("map")}
-          {console.log(this.state)}
+     
           {this.state.suggestions.map((suggestion) => (
             <li
               key={suggestion}
