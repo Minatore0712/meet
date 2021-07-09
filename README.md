@@ -40,6 +40,3 @@ It will use the Google Calender API to fetch data about upcoming events in certa
 - recharts
 - web-vitals
 - workbox
-
-# License
-Distributed under the MIT License. See LICENSE for more information.
