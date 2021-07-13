@@ -21,7 +21,6 @@ It will use the Google Calender API to fetch data about upcoming events in certa
 - JavaScript
 - Node.js
 - React
-- Material-UI
 - Recharts
 - Jest
 - Puppeteer
@@ -34,7 +33,6 @@ It will use the Google Calender API to fetch data about upcoming events in certa
 - atatus-spa
 - axios
 - nprogress
-- material-ui
 - nprogress
 - react
 - recharts
